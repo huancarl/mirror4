@@ -150,11 +150,18 @@ function CourseCatalog() {
 
   async function fetchClassCodes () {
 
-    const classCodesResponse = await fetch('/api/fetchCourseCodes');
-    const classCodeMap = await classCodesResponse.json();
+    const classCodesResponse = await fetch('/api/fetchCourseCodes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+      }),
+    });
 
+    const classCodeMap = await classCodesResponse.json();
     // class code map is a mapping from class code (CS 1110) to a 5 digit code (12345)
-    setCourseCodeMapping(classCodeMap);
+    setCourseCodeMapping(classCodeMap.mapping);
   }
 
   useEffect (() => {
