@@ -42,7 +42,7 @@ function CourseCatalog() {
   //Logic for handling the course box clicks
   const handleCourseClick = (course) => {
     setSelectedCourse(course);
-    if(course in courseCodeMapping){
+    if(courseCodeMapping.hasOwnProperty(course)){
       setIsClassCodeModalVisible(true);
     }
   };
@@ -101,7 +101,7 @@ function CourseCatalog() {
       router.push(`/chatbot?course=${selectedCourse}`);
     }
 
-    if (selectedCourse && !(selectedCourse in courseCodeMapping)) {
+    if (selectedCourse && !(courseCodeMapping.hasOwnProperty(selectedCourse))) {
       router.push(`/chatbot?course=${selectedCourse}`);
     }
   }, [selectedCourse, unlockedClasses]);
