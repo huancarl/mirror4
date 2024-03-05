@@ -117,7 +117,7 @@ function CourseCatalog() {
       router.push(`/chatbot?course=${selectedCourse}`);
     }
 
-    if(selectedCourse && classCode === courseCodeMapping[selectedCourse]){
+    if(selectedCourse && classCode === courseCodeMapping[selectedCourse][0]){
       router.push(`/chatbot?course=${selectedCourse}`);
       const sessionRes = await fetch('/api/userInfo');
       const sessionData = await sessionRes.json();
